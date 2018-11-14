@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimal-ui"
+    />
+    <meta http-equiv="cleartype" content="on" />
+    <meta
+      name="msapplication-TileImage"
+      content="img/touch/apple-touch-icon-144x144-precomposed.png"
+    />
+    <meta name="msapplication-TileColor" content="#222222" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/material.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+  </head>
+  <body>
+    <script src="js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="js/vendor/material.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <div
+      class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+    mdl-layout--fixed-tabs"
+    >
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Title</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
+          <a href="#fixed-tab-2" class="mdl-layout__tab">Tab 2</a>
+          <a href="#fixed-tab-3" class="mdl-layout__tab">Tab 3</a>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+      </div>
+      <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+          <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+          <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+          <div class="page-content"><!-- Your content goes here --></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
