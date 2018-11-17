@@ -16,20 +16,48 @@
       content="img/touch/apple-touch-icon-144x144-precomposed.png"
     />
     <meta name="msapplication-TileColor" content="#222222" />
-    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- <link rel="stylesheet" href="./css/normalize.css" /> -->
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/material.min.css" />
+    <link rel="stylesheet" href="./css/dialog-polyfill.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
     <script src="./js/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="./js/vendor/dialog-polyfill.js"></script>
   </head>
   <body>
     <script src="./js/vendor/jquery-2.1.0.min.js"></script>
     <script src="./js/vendor/material.min.js"></script>
-    <script src="./js/main.js"></script>
-
+    <!-- DIALOGS -->
+    <dialog class="mdl-dialog">
+      <h4 class="mdl-dialog__title" style="font-size: 17px; font-weight: 900">
+        NEW LIST
+      </h4>
+      <div class="mdl-dialog__content"></div>
+      <div class="mdl-dialog__actions">
+        <button
+          type="button"
+          onclick="navigate('createShareableList')"
+          class="mdl-button"
+        >
+          Shareable
+        </button>
+        <button
+          type="button"
+          onclick="navigate('createSimpleList')"
+          class="mdl-button close"
+        >
+          Simple
+        </button>
+        <button type="button" onclick="closeDialog()" class="mdl-button close">
+          Cancel
+        </button>
+      </div>
+    </dialog>
+    <!-- --------- -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -40,15 +68,33 @@
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Menu</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="./lists.html">Lists</a>
-          <a class="mdl-navigation__link" href="">About</a>
+          <a class="mdl-navigation__link" onclick="navigate('list')">Lists</a>
+          <a class="mdl-navigation__link" onclick="navigate('about')">About</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
+        <div class="page-content" id="content"></div>
+      </main>
+    </div>
+    <div class="swish-view disabled"></div>
+    <div class="qr-code-view disabled">
+      <main class="mdl-layout__content">
         <div class="page-content">
-            
+          <h2>Let your friends scan it!</h2>
+          <h1>Night out with Josh!</h1>
+          <img width="160" src="./img/qr.png" />
+          <button
+            class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored back-button"
+          >
+            Back to Lists!
+          </button>
         </div>
       </main>
     </div>
+    <script src="./js/views/home.js"></script>
+    <script src="./js/views/list.js"></script>
+    <script src="./js/views/bill.js"></script>
+    <script src="./js/views/about.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
