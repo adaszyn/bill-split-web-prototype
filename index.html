@@ -32,7 +32,7 @@
     <script src="./js/vendor/jquery-2.1.0.min.js"></script>
     <script src="./js/vendor/material.min.js"></script>
     <!-- DIALOGS -->
-    <dialog class="mdl-dialog">
+    <dialog id="new-bill-dialog" class="mdl-dialog">
       <h4 class="mdl-dialog__title" style="font-size: 17px; font-weight: 900">
         NEW LIST
       </h4>
@@ -54,6 +54,20 @@
         </button>
         <button type="button" onclick="closeDialog()" class="mdl-button close">
           Cancel
+        </button>
+      </div>
+    </dialog>
+
+    <dialog id="new-bill-participant-dialog" class="mdl-dialog">
+      <h4 class="mdl-dialog__title" style="font-size: 17px; font-weight: 900">
+        Add payee
+      </h4>
+      <div class="mdl-dialog__content"></div>
+      <div class="mdl-dialog__actions">
+        <input id="new-bill-participant" class="mdl-textfield__input" type="text">
+
+        <button id="new-bill-participant-btn" type="button" class="mdl-button close">
+          Save
         </button>
       </div>
     </dialog>
