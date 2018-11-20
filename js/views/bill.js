@@ -1,3 +1,8 @@
+var newParticipantDialog = document.getElementById("new-bill-participant-dialog");
+if (!newParticipantDialog.showModal) {
+  dialogPolyfill.registerDialog(newParticipantDialog);
+}
+
 function createBillView(state) {
   const id = state.selectedBillId;
   const bill = state.billList.find(function(bill) {
@@ -16,19 +21,16 @@ function createBillView(state) {
             <div class="mdl-tooltip mdl-tooltip--large" for="payment-tab">
                 List needs to be locked first!
             </div>
-    
             Payments
             </a>
         </div>
- 
     </div>
-  
     <div class="mdl-tabs__panel tab-content-container is-active" id="bills-list">
         <ul class="demo-list-icon mdl-list" style="margin-top: -10px;">
             <li class="mdl-list__item  bill-list-item">
             <span class="mdl-list__item-primary-content section-name">
             ${renderLockButton()}
-            My expenses 
+            My expenses
             </span>
             ${renderOwnExpenses(state)}
             <div class="new-bill-entry">
@@ -42,7 +44,7 @@ function createBillView(state) {
                 <form action="#" style="flex-basis: 1">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: auto">
                     <input id="new-bill-item-value" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                    <label class="mdl-textfield__label" for="sample4">Number...</label>
+                    <label class="mdl-textfield__label" for="sample4">Amount...</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                     </div>
                 </form>
@@ -59,7 +61,7 @@ function createBillView(state) {
             </span>
             <div style="align-self: stretch">
             <ul class="demo-list-icon mdl-list">
-       
+
               <li class="mdl-list__item bill-entry">
                     <span class="mdl-list__item-primary-content">
                     <i class="material-icons mdl-list__item-icon">remove</i>
@@ -67,7 +69,7 @@ function createBillView(state) {
                     </span>
                     <span class="bill-item-price">440 SEK</span>
                 </li>
-           
+
             </ul>
              </div>
             </li>
@@ -92,7 +94,6 @@ function createBillView(state) {
                                 </span>
                                 <span class="bill-item-price">500SEK</span>
                             </li>
-                       
                         </ul>
                 </div>
             </li>
@@ -114,7 +115,7 @@ function renderPayments() {
             </span>
             <button  style="transform: scale(0.6)" class="pay-swish-btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                 <i class="material-icons">arrow_forward</i>
-             </button>       
+             </button>
         </div>
         <div class="mdl-list__item">
             <span class="mdl-list__item-primary-content">
@@ -125,7 +126,6 @@ function renderPayments() {
                 <i class="material-icons">arrow_forward</i>
             </button>
         </div>
-   
     </div>
 `;
 }
@@ -172,14 +172,12 @@ function createSimpleBillView() {
             Payments
             </a>
         </div>
- 
     </div>
-  
     <div class="mdl-tabs__panel tab-content-container is-active" id="bills-list">
         <ul class="demo-list-icon mdl-list" style="margin-top: -10px;">
             <li class="mdl-list__item  bill-list-item">
                 <span class="mdl-list__item-primary-content section-name">
-                My expenses 
+                My expenses
                 </span>
                 ${renderOwnExpenses(state)}
                 <div class="new-bill-entry">
@@ -204,6 +202,9 @@ function createSimpleBillView() {
             </li>
             ${bill.participants.map(renderParticipantSection).join("")}
         </ul>
+        <button class="mdl-button mdl-button--raised mdl-button--colored" onclick="newParticipantDialog.showModal()">
+           Add payee
+        </button>
     </div>
     <div class="mdl-tabs__panel tab-content-container" id="payments-list">
         ${renderSimplePayments()}
@@ -220,7 +221,7 @@ function renderSimplePayments() {
               </span>
               <button  style="transform: scale(0.6)" class="pay-qr-btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                   <i class="material-icons">arrow_forward</i>
-               </button>       
+               </button>
           </div>
           <div class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
@@ -231,7 +232,6 @@ function renderSimplePayments() {
                   <i class="material-icons">arrow_forward</i>
               </button>
           </div>
-     
       </div>
   `;
   }
@@ -241,7 +241,7 @@ function renderParticipantSection(participant) {
   return `
     <li class="mdl-list__item  bill-list-item">
         <span class="mdl-list__item-primary-content section-name">
-        ${participant.name} 
+        ${participant.name}
         </span>
         ${renderParticipantExpense(participant)}
         ${renderParticipantInput(participant)}
@@ -291,4 +291,11 @@ $(document).on('click', '.participant-add-bill-item-btn', function() {
 })
 $(document).on("click", "#lock-button", function() {
   state.setPaymentsAccessibility(!state.paymentsAccessible);
+});
+$(document).on("click", "#new-bill-participant-btn", function() {
+  const bill = state.getSelectedBill();
+  const participantName = $("#new-bill-participant").val();
+
+  bill.addParticipant(participantName);
+  newParticipantDialog.close();
 });

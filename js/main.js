@@ -46,6 +46,13 @@ Bill.prototype.addItemByParticipantName = function(
   });
   updateCurrentView();
 };
+Bill.prototype.addParticipant = function(name) {
+  this.participants.push({
+    name: name,
+    items: [],
+  })
+  updateCurrentView();
+}
 function ApplicationState() {
   this.billList = [];
   this.selectedBillId = null;

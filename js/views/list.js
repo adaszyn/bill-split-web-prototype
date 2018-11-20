@@ -1,4 +1,4 @@
-var dialog = document.querySelector("dialog");
+var dialog = document.getElementById("new-bill-dialog");
 if (!dialog.showModal) {
   dialogPolyfill.registerDialog(dialog);
 }
@@ -50,11 +50,11 @@ function listItemView(item) {
       </div>
 
       <div class="mdl-card__menu">
-        <button 
+        <button
           data-item-id="${item.id}"
           class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect remove-bill-button"
         >
-          <a class="mdl-list__item-secondary-action" 
+          <a class="mdl-list__item-secondary-action"
             ><i class="material-icons">delete</i></a
           >
         </button>
@@ -90,7 +90,6 @@ function createShareableListView(state) {
   <div class="demo-card mdl-card mdl-shadow--2dp">
     <h1 class="new-list-modal">Choose a cool name for your bill!</h1>
     <form action="#">
-            
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="text" id="billName">
         <label class="mdl-textfield__label" for="sample3">Text...</label>
@@ -108,7 +107,6 @@ function createSimpleListView(state) {
   <div class="demo-card mdl-card mdl-shadow--2dp">
     <h1 class="new-list-modal">Choose a cool name for your bill!</h1>
     <form action="#">
-            
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="text" id="billName">
         <label class="mdl-textfield__label" for="sample3">Text...</label>
