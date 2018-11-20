@@ -42,7 +42,7 @@ function createBillView(state) {
                 <form action="#" style="flex-basis: 1">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: auto">
                     <input id="new-bill-item-value" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                    <label class="mdl-textfield__label" for="sample4">Number...</label>
+                    <label class="mdl-textfield__label" for="sample4">Amount...</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                     </div>
                 </form>
